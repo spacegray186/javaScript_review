@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <title>01_성적표.html</title>
+    </head>
+    <body>
+
+        <h3>성적표</h3>
+        <div id="demo"></div>
+
+        <script>
+            let name="손흥민";
+            let kor=100, eng=100, mat=95;
+
+            let total=kor+eng+mat;  // 총점 구하기
+            let aver=total/3;       // 평균 구하기
+
+            /*
+                ● 출력결과 (표작성해서 본문 id=demo에 출력)
+                -----------------------------
+                이름    손흥민
+                -----------------------------
+                국어    100
+                -----------------------------
+                영어    100
+                -----------------------------
+                수학    95
+                -----------------------------
+                총점    235
+                -----------------------------
+                평균    98
+                -----------------------------
+                        A학점                   문1) 평균 90이상 A, 80이상 B, 70이상 C, 60이상 D, 나머지는 F ~~
+                결과    합격                    문2) 과락(한과목이라도 40미만이면 재시험) - 합격/재시험/탈락
+                        *********               문3) 평균 10점당 * 한개씩
+                        장학생                  문4) 평균 95이상 장학생
+                ----------------------------
+            */
+
+            // document.write("이름    " + name + "<br>");
+            // document.write("국어    " + kor + "<br>");
+            // document.write("영어    " + eng + "<br>");
+            // document.write("수학    " + mat + "<br>");
+            // document.write("총점    " + total + "<br>");
+            // document.write("평균    " + parseInt(aver) + "<br>");
+
+            let result1="", result2="", result3="", result4="";
+            if(aver>=90) {
+                result1 = "A";
+            } else if(aver>=80) {
+                result1 = "B";
+            } else if(aver>=70) {
+                result1 = "C";
+            } else if(aver>=60) {
+                result1 = "D";
+            } else {
+                result1 = "F";
+            }
+
+            if(aver >= 70) {
+                if(kor < 40 || eng < 40 || mat < 40) {
+                    result2 = "재시험";
+                } else {
+                   result2 = "합격"; 
+                }
+            } else {
+                result2 = "탈락";
+            }
+            
+            
+            if(aver>=95) {
+                result4="장학생";
+            } 
+            
+            
+            // document.write("결과 : " + result1 + "<br>");
+            // document.write(result2 + "<br>");
+            // document.write(result3 + "<br>");
+            for(i=1; i<=parseInt(aver/10); i++) {
+                // document.write("*"); 바로 별을 저장하면 되는 거였음
+                result3+="*";
+            }
+            // document.write(result4 + "<br>");
+
+            let result="";  // 결과값
+            result += "<table border='1'>";
+            result += "<tr>";
+            result += "   <th>이름</th>";
+            result += "   <td>" + name + "</td>";
+            result += "</tr>";
+            result += "<tr>";
+            result += "   <th>국어</th>";
+            result += "   <td>" + kor + "</td>";
+            result += "</tr>";
+            result += "<tr>";
+            result += "   <th>영어</th>";
+            result += "   <td>" + eng + "</td>";
+            result += "</tr>";
+            result += "<tr>";
+            result += "   <th>수학</th>";
+            result += "   <td>" + mat + "</td>";
+            result += "</tr>";
+            result += "<tr>";
+            result += "   <th>총점</th>";
+            result += "   <td>" + total + "</td>";
+            result += "</tr>";
+            result += "<tr>";
+            result += "   <th>평균</th>";
+            result += "   <td>" + parseInt(aver) + "</td>";
+            result += "</tr>";
+            result += "<tr>";
+            result += "   <th rowspan='4'>결과</th>";
+            result += "   <td>" + result1 + "</td>";
+            result += "</tr>";
+            result += "<tr>";
+            result += "   <td>" + result2 + "</td>";
+            result += "</tr>";
+            result += "<tr>";
+            result += "   <td>" + result3 + "</td>";
+            result += "</tr>";
+            result += "<tr>";
+            result += "   <td>" + result4 + "</td>";      
+            result += "</tr>";
+       
+            result += "</table>";
+            
+            document.getElementById("demo").innerHTML=result; // 결과값을 HTML tag형식으로 출력
+            
+        </script>
+
+    </body>
+</html>
