@@ -109,19 +109,41 @@
 
             } // compute() end
 
-            let num3 = document.getElementById("result");
+            //let num3 = document.getElementById("result");
                     
 
             // 9) ← 버튼을 클릭하면 id=result 값에서 마지막 글자부터 순서대로 지우기            
+            // function backspace() {
+            //     if(Number(num3.value)>=100) {
+            //         num3.value=num3.value.slice(0, 2);
+            //     } else if(Number(num3.value)>=10 && Number(num3.value)<100) {
+            //         num3.value=num3.value.slice(0,1);
+            //     } else if(Number(num3.value<10)) {
+            //         num3.value=0;
+            //     }                
+            // } // backspace() end
+            
+            // id=result 값에서 마지막 글자만 제외시키고 다시 대입
+            // 단, 자리수가 한 개인 값은 0으로 대입
             function backspace() {
-                if(Number(num3.value)>=100) {
-                    num3.value=num3.value.slice(0, 2);
-                } else if(Number(num3.value)>=10 && Number(num3.value)<100) {
-                    num3.value=num3.value.slice(0,1);
-                } else if(Number(num3.value<10)) {
-                    num3.value=0;
-                }
-                
+                       
+                // a) id=result 값을 가져와서 글자개수 출력하기
+                let result=document.getElementById("result").value;
+                //alert(result);
+                //alert(result.length);
+
+                // b) 처음글자부터 마지막 글자를 제외시키고 문자열 가져오기(substring())
+                let len=result.length;
+                //alert(result.substring(0, len-1));
+
+                // c) 분리된 b) 문자열을 다시 id=result에 대입하기
+                // 단, 글자개수가 1개이면 0으로 다시 대입
+                if(len==1) {
+                    document.getElementById("result").value=0;
+                } else {
+                    document.getElementById("result").value=result.substring(0, len-1);
+                } // if end
+
             } // backspace() end
 
         </script>
