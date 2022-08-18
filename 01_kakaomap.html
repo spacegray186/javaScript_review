@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>01_kakaomap.html</title>
+</head>
+<body>
+	<!-- 주의) 구글맵 위도, 경도가 표시 되지 않을 경우 -->
+	<!-- 		구글지도 좌표 지역 설정을 다른 나라로 설정하면 좌표가 바로 뜬다. -->
+	<!-- 		지역 설정은 지도 하단 오른쪽에 작은 글씨 대한민국을 클릭하면 바꿀 수 있다. -->
+
+    <!-- Kakao 지도 시작하기 -->
+    <!-- 강남 삼원타워 지도 띄우기 -->
+	<div id="map" style="width:500px;height:400px;"></div>  <!-- 지도가 나타나는 곳 -->
+	<script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=cdc230834c1a7c5c6ce68bd1cc8ede1a"></script>
+	<script>
+		var container = document.getElementById('map');
+		var options = {
+			center: new kakao.maps.LatLng(37.2031269,127.1005102),  // 지도의 중심좌표
+			level: 3    // 지도의 확대 레벨
+		};
+
+        // 지도를 표시할 div와 지도 옵션으로 지도를 생성합니다
+		var map = new kakao.maps.Map(container, options);
+	</script>
+</body>
+</html>
